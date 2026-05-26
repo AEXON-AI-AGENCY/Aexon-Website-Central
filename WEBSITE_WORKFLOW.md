@@ -7,8 +7,8 @@ This folder is the organized working home for the Aexon AI Agency public website
 - Production domain: https://aexonai.com
 - Vercel project: `aexon-ai-agency-website`
 - GitHub repository for website source: `AEXON-AI-AGENCY/SAAS-website-Frontend`
-- Latest production deployment from this folder: `dpl_4uDzCMfD7YuKNq9LL5nXh7a3edK3`
-- Production deployment URL: https://aexon-ai-agency-website-b6xnypcbg-brandontek97-4242s-projects.vercel.app
+- Latest production deployment from this folder: `dpl_Zc9nMa7c7okr9ZdAoXyLNyP4pbrd`
+- Production deployment URL: https://aexon-ai-agency-website-lejlvo4op-brandontek97-4242s-projects.vercel.app
 
 ## Recent Workflow
 

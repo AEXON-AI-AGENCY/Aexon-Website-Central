@@ -902,38 +902,87 @@ h2 {
     linear-gradient(180deg, rgba(11, 28, 49, 0.98), rgba(5, 13, 25, 0.98));
 }
 
-.cta-icon {
-  display: grid;
-  place-items: center;
-  width: 62px;
-  height: 62px;
-  border: 1px solid rgba(129, 218, 255, 0.24);
-  border-radius: 8px;
-  background: rgba(86, 217, 255, 0.08);
-}
-
-.cta-panel h3 {
-  margin-top: 24px;
-  font-size: 1.7rem;
-}
-
-.cta-panel ul {
-  display: grid;
-  gap: 18px;
-  padding: 0;
-  margin: 28px 0 30px;
-  list-style: none;
-}
-
-.cta-panel li {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  color: #eaf6ff;
-}
-
 .cta-button {
   width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+.intake-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: grid;
+  gap: 10px;
+}
+
+.form-field-wide,
+.form-submit {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  color: #f3fbff;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid rgba(129, 218, 255, 0.12);
+  border-radius: 8px;
+  color: #f7fcff;
+  background: rgba(0, 4, 9, 0.82);
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.form-field input,
+.form-field select {
+  min-height: 50px;
+  padding: 0 18px;
+}
+
+.form-field textarea {
+  min-height: 138px;
+  resize: vertical;
+  padding: 16px 18px;
+  line-height: 1.45;
+}
+
+.form-field select {
+  appearance: none;
+  background:
+    linear-gradient(45deg, transparent 50%, rgba(244, 252, 255, 0.64) 50%) calc(100% - 20px) 21px / 6px 6px no-repeat,
+    linear-gradient(135deg, rgba(244, 252, 255, 0.64) 50%, transparent 50%) calc(100% - 15px) 21px / 6px 6px no-repeat,
+    rgba(0, 4, 9, 0.82);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(211, 225, 233, 0.66);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: rgba(77, 255, 210, 0.52);
+  background-color: rgba(0, 7, 13, 0.94);
+  box-shadow: 0 0 0 3px rgba(77, 255, 210, 0.1);
+}
+
+.form-submit {
+  margin-top: 12px;
 }
 
 .footer {

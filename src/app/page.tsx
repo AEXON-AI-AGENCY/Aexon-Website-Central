@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import {
   ArrowRight,
   BrainCircuit,
-  CalendarClock,
   Check,
   ChevronDown,
   Network,
@@ -90,7 +89,7 @@ const proposalSteps = [
   },
   {
     label: "Custom Proposal",
-    text: "You receive a clear implementation plan with recommended systems, priorities, pricing, and timeline.",
+    text: "You receive a clear implementation plan with recommended systems, priorities, scope, and timeline.",
   },
   {
     label: "Onboarding",
@@ -408,33 +407,105 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <aside className="cta-panel" aria-label="Schedule discovery call">
-          <div className="cta-icon">
-            <CalendarClock size={32} />
-          </div>
-          <h3>Start the Conversation</h3>
-          <p>
-            No pressure. Just a direct conversation about your operation, the
-            systems you need, and how AI can support the business you are
-            building.
-          </p>
-          <ul>
-            <li>
-              <Check size={18} /> 30-minute discovery call
-            </li>
-            <li>
-              <Check size={18} /> Custom proposal within 48 hours
-            </li>
-            <li>
-              <Check size={18} /> Clear system roadmap
-            </li>
-            <li>
-              <Check size={18} /> Transparent implementation plan
-            </li>
-          </ul>
-          <a className="cta-button" href="mailto:aexonaisupport@gmail.com">
-            Schedule Discovery Call <ArrowRight size={18} />
-          </a>
+        <aside className="cta-panel" aria-label="Schedule discovery call form">
+          <form
+            className="intake-form"
+            action="mailto:aexonaisupport@gmail.com"
+            method="post"
+            encType="text/plain"
+          >
+            <input
+              type="hidden"
+              name="subject"
+              value="Aexon AI discovery call request"
+            />
+            <div className="form-field">
+              <label htmlFor="first-name">First Name</label>
+              <input
+                id="first-name"
+                name="First Name"
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="last-name">Last Name</label>
+              <input
+                id="last-name"
+                name="Last Name"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="work-email">Work Email</label>
+              <input
+                id="work-email"
+                name="Work Email"
+                type="email"
+                placeholder="you@company.com"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="company">Company</label>
+              <input
+                id="company"
+                name="Company"
+                placeholder="Your company"
+                required
+              />
+            </div>
+            <div className="form-field form-field-wide">
+              <label htmlFor="company-website">Company Website</label>
+              <input
+                id="company-website"
+                name="Company Website"
+                type="url"
+                placeholder="https://yourcompany.com"
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="role">Your Role</label>
+              <select id="role" name="Your Role" required defaultValue="">
+                <option value="" disabled>
+                  Select your role
+                </option>
+                <option>Founder / Owner</option>
+                <option>Executive</option>
+                <option>Operations</option>
+                <option>Sales / Marketing</option>
+                <option>Technology</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div className="form-field">
+              <label htmlFor="company-size">Company Size</label>
+              <select id="company-size" name="Company Size" required defaultValue="">
+                <option value="" disabled>
+                  Number of employees
+                </option>
+                <option>1-10</option>
+                <option>11-50</option>
+                <option>51-200</option>
+                <option>201-500</option>
+                <option>500+</option>
+              </select>
+            </div>
+            <div className="form-field form-field-wide">
+              <label htmlFor="project">Tell Us About Your Project</label>
+              <textarea
+                id="project"
+                name="Project Details"
+                rows={5}
+                placeholder="What challenges are you facing? What does success look like for your business?"
+                required
+              />
+            </div>
+            <button className="cta-button form-submit" type="submit">
+              Schedule Discovery Call <ArrowRight size={18} />
+            </button>
+          </form>
         </aside>
       </section>
 
