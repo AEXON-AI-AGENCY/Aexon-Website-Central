@@ -33,7 +33,7 @@ The live production site is deployed through Vercel.
 
 - Production domain: https://aexonai.com
 - Vercel project: `aexon-ai-agency-website`
-- GitHub source repository: `Aexon-AI-Agency/SaaS-Website-Frontend`
+- GitHub source repository: `AEXON-AI-AGENCY/SAAS-website-Frontend`
 
 Recommended production deployment flow:
 
@@ -54,4 +54,4 @@ Do not commit generated or private local state:
 - logs
 - secrets, tokens, or keys
 
-Future website changes should be transferred to `Aexon-AI-Agency/SaaS-Website-Frontend` only after Beano confirms the transfer.
+Future website changes should be transferred to `AEXON-AI-AGENCY/SAAS-website-Frontend` only after Beano confirms the transfer.
