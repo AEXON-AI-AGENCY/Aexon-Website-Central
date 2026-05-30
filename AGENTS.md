@@ -12,6 +12,7 @@ This folder is the local working area for the **Aexon AI Agency** public website
 
 ## Website Working Notes
 
+- Repository structure: frontend code lives in `frontend/`; backend/API/service code lives in `backend/`; handoff docs live in `docs/`.
 - This directory may start empty or may later receive the website code. Inspect the actual app structure before making assumptions.
 - The website is connected to Vercel. Prefer Vercel-compatible patterns and verify with the local build/dev scripts when available.
 - The current team review/source handoff repository is **AEXON-AI-AGENCY/Aexon-Website-Central** unless Beano explicitly names a different website repository.
@@ -21,6 +22,7 @@ This folder is the local working area for the **Aexon AI Agency** public website
 - For frontend changes, keep the first screen focused on the actual Aexon AI Agency offer, not a generic landing page.
 - Use real product/service content and concrete agency positioning instead of vague AI buzzwords.
 - Preserve any existing design system and framework conventions once website code is present.
+- For this repository, run frontend commands from `frontend/`.
 
 ## Agency Repository Roles
 
@@ -35,7 +37,7 @@ This folder is the local working area for the **Aexon AI Agency** public website
 When Beano asks to collect a completed locally built agent and publish it to the GitHub organization **Aexon AI Agency**, treat it as business publishing work.
 
 - Approved agent work destined for the organization should go into **Agent-Factory** unless Beano explicitly chooses a different Aexon AI Agency repository.
-- Website edits should go to **SaaS Website Frontend** only when Beano asks to republish or push website work.
+- Website edits should go to **Aexon-Website-Central** unless Beano explicitly names a different website repository.
 - Copy only the completed and approved local folder into the selected destination repository.
 - Before copying or staging, exclude sensitive/generated content including `.env`, `.env.local`, `secrets/`, `token/`, `tokens/`, `keys/`, `.logs/`, `logs/`, `node_modules/`, and anything similarly private or unnecessary.
 - Do not copy unrelated folders.

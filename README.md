@@ -1,56 +1,45 @@
-# Aexon AI Agency Website
+# Aexon Website Central
 
-Public website for Aexon AI Agency, focused on AI workflow automation, custom AI agents, operational systems, and business process infrastructure.
+Central source repository for the Aexon AI Agency website and related service code.
 
-## Stack
+## Repository Structure
 
-- Next.js 16 App Router
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- Lucide React icons
-- Vercel deployment
+- `frontend/` - Next.js public website for Aexon AI Agency.
+- `backend/` - Reserved for backend APIs, services, database code, workers, and server-side integrations.
+- `docs/` - Workflow and handoff notes from the local website build.
+- `AGENTS.md` and `CLAUDE.md` - AI-assistant project context for future contributors.
 
-## Included Project Files
-
-- `src/app/` - App Router pages, layout, SEO routes, and homepage components.
-- `public/` - Aexon logo and website image assets.
-- `README.md`, `WEBSITE_WORKFLOW.md`, `AGENTS.md`, `CLAUDE.md`, and `LOCAL_ONLY_CONTENTS.md` - project handoff, workflow, and AI-assistant context.
-- No website-specific `skills/` folder was present in the local source at publish time.
-
-## Local Development
+## Frontend
 
 ```bash
+cd frontend
 npm install
 npm run dev -- --port 3000
 ```
 
-Open http://localhost:3000.
-
-## Validation
+Validation:
 
 ```bash
+cd frontend
 npm run lint
 npm run build
 ```
 
+## Backend
+
+No backend service is included in this publish. Add future backend work under `backend/` so frontend and backend code stay separated.
+
 ## Deployment
 
-The live production site is deployed through Vercel.
+The website is built with Next.js and deployed through Vercel.
 
 - Production domain: https://aexonai.com
 - Vercel project: `aexon-ai-agency-website`
-- GitHub review/source repository: `AEXON-AI-AGENCY/Aexon-Website-Central`
+- GitHub source repository: `AEXON-AI-AGENCY/Aexon-Website-Central`
 
-Recommended production deployment flow:
+When deploying from this repository, configure Vercel to use `frontend/` as the project root.
 
-```bash
-npm exec --yes vercel -- pull --yes --environment=production
-npm exec --yes vercel -- build --prod
-npm exec --yes vercel -- deploy --prebuilt --prod --yes
-```
-
-## Repository Notes
+## Safety
 
 Do not commit generated or private local state:
 
@@ -60,7 +49,3 @@ Do not commit generated or private local state:
 - `node_modules/`
 - logs
 - secrets, tokens, or keys
-
-MCP dependencies: none required for the website runtime.
-
-Future website changes should be pushed to `AEXON-AI-AGENCY/Aexon-Website-Central` on a review branch unless Beano requests a different Aexon AI Agency repository.

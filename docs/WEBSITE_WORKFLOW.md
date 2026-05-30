@@ -1,6 +1,6 @@
 # Aexon AI Website Workflow
 
-This folder is the organized working home for the Aexon AI Agency public website.
+This repository is the organized working home for the Aexon AI Agency public website.
 
 ## Current Live Site
 
@@ -34,6 +34,7 @@ This folder is the organized working home for the Aexon AI Agency public website
 ## Useful Commands
 
 ```bash
+cd frontend
 npm run dev -- --port 3000
 npm run lint
 npm run build
@@ -44,8 +45,9 @@ npm exec --yes vercel -- deploy --prebuilt --prod --yes
 
 ## Notes
 
-- Future Aexon AI website edits should happen from this folder.
+- Future Aexon AI website frontend edits should happen from `frontend/`.
+- Future backend/API/service edits should happen from `backend/`.
 - After any website update or change, ask Beano whether he wants the changes transferred to `AEXON-AI-AGENCY/Aexon-Website-Central`.
-- When Beano approves transferring website changes, publish them to `AEXON-AI-AGENCY/Aexon-Website-Central` on a new `codex/` branch, not directly to `main`.
+- Beano requested this repository be structured on `main` only for the current handoff.
 - Do not commit or publish `.env*`, `.vercel/`, `.next/`, `node_modules/`, logs, secrets, tokens, or keys.
 - If the Vercel project link is missing, restore it by linking this folder to the existing `aexon-ai-agency-website` Vercel project instead of creating a new project.
