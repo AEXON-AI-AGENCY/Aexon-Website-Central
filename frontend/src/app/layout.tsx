@@ -1,42 +1,61 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://igiehoneliteacademy.com"),
-  applicationName: "Igiehon Elite Academy",
+  metadataBase: new URL("https://aexonai.com"),
+  applicationName: "Aexon AI",
   title: {
-    default: "Igiehon Elite Academy | Ireland's #1 Basketball Training Academy",
-    template: "%s | Igiehon Elite Academy",
+    default: "Aexon AI Agency | Intelligent Business Systems",
+    template: "%s | Aexon AI Agency",
   },
   description:
-    "Ireland's #1 basketball academy for elite training, international exposure, and athlete development.",
-  keywords: ["basketball academy", "Igiehon Elite Academy", "Ireland basketball"],
+    "Aexon AI builds workflow automations, custom AI agents, and operational systems that help businesses save time, reduce manual work, and improve ROI.",
+  keywords: [
+    "Aexon AI",
+    "AI agency",
+    "AI automation",
+    "workflow automation",
+    "custom AI agents",
+    "business automation",
+    "AI operations",
+  ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Igiehon Elite Academy | Ireland's #1 Basketball Training Academy",
+    title: "Aexon AI Agency | Intelligent Business Systems",
     description:
-      "Elite basketball training, locations, and official academy merchandise.",
-    url: "https://igiehoneliteacademy.com",
-    siteName: "Igiehon Elite Academy",
+      "AI workflow automation, custom agents, and operational infrastructure for businesses that want clearer systems and better ROI.",
+    url: "https://aexonai.com",
+    siteName: "Aexon AI Agency",
     images: [
       {
-        url: "/igiehon/IMG_4820_1770112225339-9kBG3xn9.JPEG",
-        width: 5920,
-        height: 4000,
-        alt: "Igiehon Elite Academy team",
+        url: "/aexon-logo.png",
+        width: 1536,
+        height: 1024,
+        alt: "Aexon AI logo",
       },
     ],
-    locale: "en_IE",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Igiehon Elite Academy",
+    title: "Aexon AI Agency | Intelligent Business Systems",
     description:
-      "Ireland's #1 basketball academy for elite training and athlete development.",
-    images: ["/igiehon/IMG_4820_1770112225339-9kBG3xn9.JPEG"],
+      "AI workflow automation, custom agents, and operational infrastructure for modern businesses.",
+    images: ["/aexon-logo.png"],
   },
   robots: {
     index: true,
@@ -54,8 +73,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
