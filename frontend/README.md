@@ -1,66 +1,36 @@
-# Aexon AI Agency Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Public website for Aexon AI Agency, focused on AI workflow automation, custom AI agents, operational systems, and business process infrastructure.
+## Getting Started
 
-## Stack
-
-- Next.js 16 App Router
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- Lucide React icons
-- Vercel deployment
-
-## Included Project Files
-
-- `src/app/` - App Router pages, layout, SEO routes, and homepage components.
-- `public/` - Aexon logo and website image assets.
-- Root `README.md`, `docs/WEBSITE_WORKFLOW.md`, `docs/LOCAL_ONLY_CONTENTS.md`, `AGENTS.md`, and `CLAUDE.md` - project handoff, workflow, and AI-assistant context.
-- No website-specific `skills/` folder was present in the local source at publish time.
-
-## Local Development
+First, run the development server:
 
 ```bash
-npm install
-npm run dev -- --port 3000
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Validation
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```bash
-npm run lint
-npm run build
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Deployment
+## Learn More
 
-The live production site is deployed through Vercel.
+To learn more about Next.js, take a look at the following resources:
 
-- Production domain: https://aexonai.com
-- Vercel project: `aexon-ai-agency-website`
-- GitHub review/source repository: `AEXON-AI-AGENCY/Aexon-Website-Central`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Recommended production deployment flow:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-```bash
-npm exec --yes vercel -- pull --yes --environment=production
-npm exec --yes vercel -- build --prod
-npm exec --yes vercel -- deploy --prebuilt --prod --yes
-```
+## Deploy on Vercel
 
-## Repository Notes
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Do not commit generated or private local state:
-
-- `.env*`
-- `.vercel/`
-- `.next/`
-- `node_modules/`
-- logs
-- secrets, tokens, or keys
-
-MCP dependencies: none required for the website runtime.
-
-Future website changes should be pushed to `AEXON-AI-AGENCY/Aexon-Website-Central` on a review branch unless Beano requests a different Aexon AI Agency repository.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
