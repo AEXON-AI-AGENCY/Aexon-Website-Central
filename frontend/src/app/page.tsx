@@ -1,5 +1,6 @@
 "use client";
 
+import { FormEvent, useEffect } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -125,6 +126,50 @@ const structuredData = {
 };
 
 export default function Home() {
+  useEffect(() => {
+    const revealTargets = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -14% 0px", threshold: 0.14 },
+    );
+
+    revealTargets.forEach((target) => observer.observe(target));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleInquirySubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const subject = "Aexon AI inquiry";
+    const body = [
+      `First Name: ${data.get("firstName") ?? ""}`,
+      `Last Name: ${data.get("lastName") ?? ""}`,
+      `Work Email: ${data.get("email") ?? ""}`,
+      `Company: ${data.get("company") ?? ""}`,
+      `Company Website: ${data.get("website") ?? ""}`,
+      `Role: ${data.get("role") ?? ""}`,
+      `Company Size: ${data.get("size") ?? ""}`,
+      "",
+      "Project:",
+      `${data.get("message") ?? ""}`,
+    ].join("\n");
+
+    window.location.href = `mailto:aexonaisupport@gmail.com?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#030711] text-slate-50">
       <script
@@ -141,6 +186,7 @@ export default function Home() {
               alt="Aexon AI logo"
               width={56}
               height={38}
+              style={{ width: "56px", height: "auto" }}
               priority
             />
             <span>AEXON AI</span>
@@ -193,8 +239,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section value-section">
-        <div className="section-heading">
+      <section className="section value-section" data-reveal>
+        <div className="section-heading" data-reveal>
           <p className="eyebrow">What Aexon AI provides</p>
           <h2>AI operations that feel connected, not patched together.</h2>
           <p>
@@ -203,7 +249,11 @@ export default function Home() {
             signal to the next part of the operation.
           </p>
         </div>
-        <div className="audience-marquee" aria-label="Aexon client segments">
+        <div
+          className="audience-marquee"
+          aria-label="Aexon client segments"
+          data-reveal
+        >
           <div>
             {[...audienceSegments, ...audienceSegments].map(
               (segment, index) => (
@@ -217,7 +267,7 @@ export default function Home() {
             const Icon = service.icon;
 
             return (
-              <article className="service-card" key={service.title}>
+              <article className="service-card" data-reveal key={service.title}>
                 <Icon size={28} />
                 <h3>{service.title}</h3>
                 <p>{service.copy}</p>
@@ -227,8 +277,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section system-section" id="systems">
-        <div className="system-copy">
+      <section className="section system-section" id="systems" data-reveal>
+        <div className="system-copy" data-reveal>
           <p className="eyebrow">Operational nervous system</p>
           <h2>One intelligent layer across the tools your business already uses.</h2>
           <p>
@@ -246,7 +296,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="axon-map" aria-label="Aexon operational system map">
+        <div
+          className="axon-map"
+          aria-label="Aexon operational system map"
+          data-reveal
+        >
           <div className="map-ring" />
           <div className="core-node">
             <BrainCircuit size={44} />
@@ -263,14 +317,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section process-section" id="process">
-        <div className="section-heading compact">
+      <section className="section process-section" id="process" data-reveal>
+        <div className="section-heading compact" data-reveal>
           <p className="eyebrow">How the build works</p>
           <h2>From operational friction to intelligent infrastructure.</h2>
         </div>
         <div className="process-grid">
           {process.map((item) => (
-            <article className="process-step" key={item.step}>
+            <article className="process-step" data-reveal key={item.step}>
               <span>{item.step}</span>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
@@ -279,8 +333,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section vision-section">
-        <div className="vision-panel">
+      <section className="section vision-section" data-reveal>
+        <div className="vision-panel" data-reveal>
           <div>
             <p className="eyebrow">AIOS vision</p>
             <h2>Beyond isolated tools: AI environments built for real operations.</h2>
@@ -292,7 +346,7 @@ export default function Home() {
             into unified systems.
           </p>
         </div>
-        <div className="metrics-row">
+        <div className="metrics-row" data-reveal>
           <div>
             <strong>24/7</strong>
             <span>workflow support potential</span>
@@ -308,8 +362,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section consultation-section" id="consultation">
-        <div className="consultation-copy">
+      <section className="section consultation-section" id="consultation" data-reveal>
+        <div className="consultation-copy" data-reveal>
           <p className="eyebrow">Next step</p>
           <h2>From conversation to proposal in 48 hours.</h2>
           <div className="timeline">
@@ -324,33 +378,87 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <aside className="cta-panel" aria-label="Schedule discovery call">
+        <aside
+          className="inquiry-panel"
+          aria-label="Submit an Aexon AI inquiry"
+          data-reveal
+        >
           <div className="cta-icon">
             <CalendarClock size={32} />
           </div>
-          <h3>Start the Conversation</h3>
+          <h3>Submit an Inquiry</h3>
           <p>
-            No pressure. Just a direct conversation about your operation, the
-            systems you need, and how AI can support the business you are
-            building.
+            Share the basics of your business and what you want the system to
+            solve. Aexon AI will review the fit and follow up with the next step.
           </p>
-          <ul>
-            <li>
-              <Check size={18} /> 30-minute discovery call
-            </li>
-            <li>
-              <Check size={18} /> Custom proposal within 48 hours
-            </li>
-            <li>
-              <Check size={18} /> Clear system roadmap
-            </li>
-            <li>
-              <Check size={18} /> Transparent implementation plan
-            </li>
-          </ul>
-          <a className="cta-button" href="mailto:aexonaisupport@gmail.com">
-            Schedule Discovery Call <ArrowRight size={18} />
-          </a>
+          <form className="inquiry-form" onSubmit={handleInquirySubmit}>
+            <label>
+              First Name
+              <input name="firstName" placeholder="First Name" type="text" required />
+            </label>
+            <label>
+              Last Name
+              <input name="lastName" placeholder="Last Name" type="text" required />
+            </label>
+            <label>
+              Work Email
+              <input
+                name="email"
+                placeholder="you@company.com"
+                type="email"
+                required
+              />
+            </label>
+            <label>
+              Company
+              <input name="company" placeholder="Your company" type="text" />
+            </label>
+            <label className="form-span">
+              Company Website
+              <input
+                name="website"
+                placeholder="https://yourcompany.com"
+                type="url"
+              />
+            </label>
+            <label>
+              Your Role
+              <select name="role" defaultValue="">
+                <option value="" disabled>
+                  Select your role
+                </option>
+                <option>CEO / Founder</option>
+                <option>COO / Head of Operations</option>
+                <option>CFO / Finance Lead</option>
+                <option>CIO / CTO / Head of Data</option>
+                <option>VP / Director</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>
+              Company Size
+              <select name="size" defaultValue="">
+                <option value="" disabled>
+                  Number of employees
+                </option>
+                <option>1 - 50</option>
+                <option>50 - 100</option>
+                <option>100 - 500</option>
+                <option>500+</option>
+              </select>
+            </label>
+            <label className="form-span">
+              Tell Us About Your Project
+              <textarea
+                name="message"
+                placeholder="What challenges are you facing? What does success look like for your business?"
+                rows={5}
+              />
+            </label>
+            <button className="submit-button form-span" type="submit">
+              Submit Inquiry <ArrowRight size={18} />
+            </button>
+          </form>
         </aside>
       </section>
 
@@ -361,6 +469,7 @@ export default function Home() {
             alt="Aexon AI logo"
             width={78}
             height={52}
+            style={{ width: "78px", height: "auto" }}
           />
           <span>AEXON AI</span>
         </div>

@@ -24,6 +24,18 @@ This folder is the local working area for the **Aexon AI Agency** public website
 - Preserve any existing design system and framework conventions once website code is present.
 - For this repository, run frontend commands from `frontend/`.
 
+## Approved Website Direction
+
+Beano approved the current Aexon AI website direction on May 31, 2026. Treat this as the canonical visual and structural direction for future website work unless Beano explicitly asks for a redesign.
+
+- Use the current dark Aexon AI system aesthetic: deep navy/black backgrounds, restrained cyan/blue borders, mint/cyan accents, subtle grid/system visuals, and polished operational-tech panels.
+- Typography should follow the Morningside AI reference style: Poppins, light body and large headings, with headings generally reading around weight 300 and smaller card/form headings around weight 400. Avoid reverting to the older heavy Aexon heading style unless Beano asks.
+- Keep site motion broad and elegant across the whole page: section/card reveal on scroll, subtle transitions, animated system visuals, and hover/focus polish. Do not add a separate full-screen scroll-story narrative section unless Beano specifically requests one.
+- Repeated detail surfaces such as service cards, outcome boxes, system nodes, metrics, process cards, and inquiry panels should highlight with a blue/cyan border and glow on hover/focus.
+- The consultation area should use the current inquiry form pattern inspired by Morningside's work-with-us form: first name, last name, work email, company, company website, role, company size, project message, and a single Submit Inquiry button. Do not include a budget range section unless Beano asks.
+- Keep content concrete and agency-focused: AI agents, workflow automation, AI OS, operational systems, business process automation, ROI opportunities, deployment, integrations, and measurable operational lift.
+- Future additions should extend this structure and style rather than introducing a new landing-page language, generic SaaS hero, or unrelated palette.
+
 ## Agency Repository Roles
 
 - **Agent-Factory**: approved customizable agents Beano asks to publish.
