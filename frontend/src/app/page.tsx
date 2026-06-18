@@ -56,7 +56,7 @@ const audienceSegments = [
   "Growing companies",
 ];
 
-const process = [
+const buildProcess = [
   {
     step: "01",
     title: "Find the ROI opportunity",
@@ -125,6 +125,61 @@ const structuredData = {
   ],
 };
 
+const calendlyWidgetScript = "https://assets.calendly.com/assets/external/widget.js";
+const calendlyWidgetStylesheet =
+  "https://assets.calendly.com/assets/external/widget.css";
+
+type CalendlyWindow = Window & {
+  Calendly?: {
+    initPopupWidget: (options: {
+      url: string;
+      prefill?: {
+        name?: string;
+        email?: string;
+      };
+    }) => void;
+  };
+};
+
+function loadCalendlyStylesheet() {
+  if (document.querySelector(`link[href="${calendlyWidgetStylesheet}"]`)) {
+    return;
+  }
+
+  const stylesheet = document.createElement("link");
+  stylesheet.href = calendlyWidgetStylesheet;
+  stylesheet.rel = "stylesheet";
+  document.head.appendChild(stylesheet);
+}
+
+function loadCalendlyWidget() {
+  return new Promise<CalendlyWindow["Calendly"]>((resolve) => {
+    const calendlyWindow = window as CalendlyWindow;
+
+    loadCalendlyStylesheet();
+
+    if (calendlyWindow.Calendly) {
+      resolve(calendlyWindow.Calendly);
+      return;
+    }
+
+    const script = document.createElement("script");
+
+    const resolveWithCurrentWidget = () => {
+      window.clearTimeout(timeoutId);
+      resolve(calendlyWindow.Calendly);
+    };
+
+    script.src = calendlyWidgetScript;
+    script.async = true;
+    script.onload = resolveWithCurrentWidget;
+    script.onerror = resolveWithCurrentWidget;
+
+    const timeoutId = window.setTimeout(resolveWithCurrentWidget, 5000);
+    document.body.appendChild(script);
+  });
+}
+
 export default function Home() {
   useEffect(() => {
     const revealTargets = document.querySelectorAll<HTMLElement>("[data-reveal]");
@@ -147,15 +202,36 @@ export default function Home() {
     };
   }, []);
 
-  const handleInquirySubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleInquirySubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const data = new FormData(event.currentTarget);
+    const firstName = String(data.get("firstName") ?? "");
+    const lastName = String(data.get("lastName") ?? "");
+    const email = String(data.get("email") ?? "");
+    const name = `${firstName} ${lastName}`.trim();
+    const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL;
+
+    if (calendlyUrl && typeof window !== "undefined") {
+      const calendly = await loadCalendlyWidget();
+
+      if (calendly) {
+        calendly.initPopupWidget({
+          url: calendlyUrl,
+          prefill: {
+            name,
+            email,
+          },
+        });
+        return;
+      }
+    }
+
     const subject = "Aexon AI inquiry";
     const body = [
-      `First Name: ${data.get("firstName") ?? ""}`,
-      `Last Name: ${data.get("lastName") ?? ""}`,
-      `Work Email: ${data.get("email") ?? ""}`,
+      `First Name: ${firstName}`,
+      `Last Name: ${lastName}`,
+      `Work Email: ${email}`,
       `Company: ${data.get("company") ?? ""}`,
       `Company Website: ${data.get("website") ?? ""}`,
       `Role: ${data.get("role") ?? ""}`,
@@ -323,7 +399,7 @@ export default function Home() {
           <h2>From operational friction to intelligent infrastructure.</h2>
         </div>
         <div className="process-grid">
-          {process.map((item) => (
+          {buildProcess.map((item) => (
             <article className="process-step" data-reveal key={item.step}>
               <span>{item.step}</span>
               <h3>{item.title}</h3>

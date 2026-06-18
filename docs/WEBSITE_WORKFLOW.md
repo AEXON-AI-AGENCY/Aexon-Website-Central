@@ -5,10 +5,10 @@ This repository is the organized working home for the Aexon AI Agency public web
 ## Current Live Site
 
 - Production domain: https://aexonai.com
-- Vercel project: `aexon-ai-agency-website`
+- Vercel project: `aexon-website-central`
 - GitHub repository for team review/source handoff: `AEXON-AI-AGENCY/Aexon-Website-Central`
-- Latest production deployment from this folder: `dpl_Zc9nMa7c7okr9ZdAoXyLNyP4pbrd`
-- Production deployment URL: https://aexon-ai-agency-website-lejlvo4op-brandontek97-4242s-projects.vercel.app
+- Latest production deployment: verify in the `aexon-website-central` Vercel project.
+- Production deployment URL: verify in the `aexon-website-central` Vercel project.
 
 ## Recent Workflow
 
@@ -50,4 +50,4 @@ npm exec --yes vercel -- deploy --prebuilt --prod --yes
 - After any website update or change, ask Beano whether he wants the changes transferred to `AEXON-AI-AGENCY/Aexon-Website-Central`.
 - Beano requested this repository be structured on `main` only for the current handoff.
 - Do not commit or publish `.env*`, `.vercel/`, `.next/`, `node_modules/`, logs, secrets, tokens, or keys.
-- If the Vercel project link is missing, restore it by linking this folder to the existing `aexon-ai-agency-website` Vercel project instead of creating a new project.
+- If the Vercel project link is missing, restore it by linking this folder to the existing `aexon-website-central` Vercel project instead of creating a new project.

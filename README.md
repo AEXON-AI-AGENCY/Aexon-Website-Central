@@ -34,10 +34,18 @@ No backend service is included in this publish. Add future backend work under `b
 The website is built with Next.js and deployed through Vercel.
 
 - Production domain: https://aexonai.com
-- Vercel project: `aexon-ai-agency-website`
+- Vercel project: `aexon-website-central`
 - GitHub source repository: `AEXON-AI-AGENCY/Aexon-Website-Central`
 
 When deploying from this repository, configure Vercel to use `frontend/` as the project root.
+
+Required environment variables:
+
+```bash
+NEXT_PUBLIC_CALENDLY_URL=https://calendly.com/your-calendly-account/your-event
+```
+
+This public Calendly event URL powers the inquiry form scheduling popup. Add it in Vercel for Production and Preview deployments.
 
 ## Safety
 
